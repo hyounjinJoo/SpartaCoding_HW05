@@ -8,7 +8,6 @@ AMyActor::AMyActor()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
-
 }
 
 // Called when the game starts or when spawned
@@ -55,7 +54,8 @@ void AMyActor::move()
 
 int32 AMyActor::step()
 {
-	int32 randomStep = rand() % 2;
+	// 기존 0 ~ 1 이동범위에서 -1 ~ 1 좌표만큼 이동할 수 있도록 수정(DevJoo, 250108)
+	int32 randomStep = (rand() % 3) - 1;
 	createEvent();
 	
 	return randomStep;
